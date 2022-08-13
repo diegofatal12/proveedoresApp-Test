@@ -10,5 +10,5 @@ import com.general.proveedores.service.ProductoServiceImp;
 @CrossOrigin(origins = "*")
 @RequestMapping(path = "api/productos")
 public class ProductoController extends BaseControllerImpl<ProductoDTO, ProductoServiceImp>{
-
+	
 }

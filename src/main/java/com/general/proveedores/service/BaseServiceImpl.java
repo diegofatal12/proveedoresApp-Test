@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.function.Function;
 
+import javax.transaction.Transactional;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -28,11 +30,11 @@ public abstract class BaseServiceImpl <D extends BaseDTO, ID extends Serializabl
         this.dtoClass = (Class<D>) genericSuperclass.getActualTypeArguments()[0];
 	}
 
-		private E mapearEntidad(D dto) {
+		protected E mapearEntidad(D dto) {
 			E entidad = modelMapper.map(dto, entityClass);
 			return entidad;
 		}
-		private D mapearDto(E e) {
+		protected D mapearDto(E e) {
 			D dto = modelMapper.map(e, dtoClass);
 			return dto;
 		}
@@ -64,7 +66,7 @@ public abstract class BaseServiceImpl <D extends BaseDTO, ID extends Serializabl
 			throw new Exception(e.fillInStackTrace());
 		}
 	}
-
+	@Transactional
 	@Override
 	public D save(D dto) throws Exception {
 		try {
@@ -73,13 +75,13 @@ public abstract class BaseServiceImpl <D extends BaseDTO, ID extends Serializabl
 			throw new Exception(e.fillInStackTrace());
 		}
 	}
-
+	@Transactional
 	@Override
 	public D update(ID id, D dto) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	@Transactional
 	@Override
 	public boolean delete(ID id) throws Exception {
 		try {

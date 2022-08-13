@@ -25,4 +25,5 @@ public class ProveedorDTO extends BaseDTO{
 	private String nombreFantasia;
 	private String razonSocial;
 	private Set<Producto> productos = new HashSet<>();
+	
 }
