@@ -19,7 +19,7 @@ import lombok.Setter;
 public class Producto extends Base{
 
 	/**
-	 * 
+	 * comentario hecho por diego y jancito
 	 */
 	private static final long serialVersionUID = 1L;
 	@Column
